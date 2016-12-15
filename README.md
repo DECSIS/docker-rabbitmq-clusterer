@@ -22,7 +22,7 @@ Fill accordingly [clusterer configuration](https://github.com/rabbitmq/rabbitmq-
     
 **Launch a one node cluster:**
     
-    docker run --rm -it --network=rabbitmqnet --hostname=NODE1 --name=NODE1 -e RABBITMQ_ERLANG_COOKIE='VERYSTRONGCOOKIE' -e CLUSTER_NODES=rabbit@NODE1 -e CLUSTER_GOSPEL_NODE=rabbit@NODE1 ???
+    docker run --rm -it --network=rabbitmqnet --hostname=NODE1 --name=NODE1 -e RABBITMQ_ERLANG_COOKIE='VERYSTRONGCOOKIE' -e CLUSTER_NODES=rabbit@NODE1 -e CLUSTER_GOSPEL_NODE=rabbit@NODE1 decsis/rabbitmq-clusterer
     
 You must have noticed that I'm using a user-defined network. That is necessary for making use of the [Embedded DNS server](https://docs.docker.com/engine/userguide/networking/configure-dns/) that Docker provides in such networks. Also both `hostname` and `name` are necessary. The `name` is for Docker serve the DNS entry with that name. The `hostname` is for each rabbit node recognize itself.
 
@@ -30,7 +30,7 @@ Finally the `RABBITMQ_ERLANG_COOKIE` must be set and be equal in all nodes all d
 
 **Launch a second node:**
 
-    docker run --rm -it --network=rabbitmqnet --hostname=NODE2 --name=NODE2 -e RABBITMQ_ERLANG_COOKIE='VERYSTRONGCOOKIE' -e CLUSTER_NODES="rabbit@NODE1,rabbit@NODE2" -e CLUSTER_GOSPEL_NODE=rabbit@NODE1 ???
+    docker run --rm -it --network=rabbitmqnet --hostname=NODE2 --name=NODE2 -e RABBITMQ_ERLANG_COOKIE='VERYSTRONGCOOKIE' -e CLUSTER_NODES="rabbit@NODE1,rabbit@NODE2" -e CLUSTER_GOSPEL_NODE=rabbit@NODE1 decsis/rabbitmq-clusterer
     
 If the container appears to be hanged is deafault rabbitmq-clusterer behaviour to wait indefinitly for all the necessary conditions to create the configured cluster so it is indicative of something missing (can be a missing running node, a network access problem or something alike).
 
@@ -47,7 +47,7 @@ Rancher `docker-compose.yml` example:
     version: '2'
     services:
       rabbit:
-        image: ????
+        image: decsis/rabbitmq-clusterer
         environment:
           RABBITMQ_ERLANG_COOKIE: ASTRONGERCOOKIE
           RANCHER_MANAGED_CLUSTER: 'true'        
