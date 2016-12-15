@@ -24,11 +24,13 @@ if [ ! -s /config/clusterer.config ]; then
 		echo "RANCHER_CLUSTER_GOSPEL_NODE: $RANCHER_CLUSTER_GOSPEL_NODE"
 		set_config $RANCHER_CLUSTER_NODES $RANCHER_CLUSTER_GOSPEL_NODE;
 	else
+		echo "ENV VARIABLES CLUSTER, setting clusterer config"
 		set_config $CLUSTER_NODES $CLUSTER_GOSPEL_NODE;
 	fi
 	sed -i -e 's#]\.#, {rabbitmq_clusterer, [{config, "/config/clusterer.config"}] }]\.#g' /etc/rabbitmq/rabbitmq.config;
 else
-	echo "Configuration exists: "
-	cat /config/clusterer.config
+	echo "Configuration exists. Will not generate a new one."	
 fi
+echo "Clusterer configuration:"
+cat /config/clusterer.config
 exec rabbitmq-server-orig
