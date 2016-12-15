@@ -1,0 +1,3 @@
+[{version, ${CLUSTER_VERSION}},
+ {nodes, [${_CLUSTER_NODES}]},
+ {gospel, {node, ${_CLUSTER_GOSPEL_NODE}}}].
