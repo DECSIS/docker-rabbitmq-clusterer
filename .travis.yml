@@ -1,0 +1,16 @@
+language: bash
+services: docker
+
+install:
+  - git clone https://github.com/DECSIS/docker-rabbitmq-clusterer.git ~/rabbitmq-clusterer
+
+before_script:
+  - env | sort
+  - image='decsis/rabbitmq-clusterer'
+
+script:
+  - docker build -t "$image" .      
+
+after_script:
+  - docker images
+
