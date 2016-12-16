@@ -6,6 +6,8 @@ It provides two way to achive this one using environment variables to defines th
 
 Clusterer version: rabbitmq_clusterer-3.6.x-667f92b0
 
+![rancher demo gif](http://i.imgur.com/A1G3Aim.gif)
+
 ## ENV Variables based cluster
 
 ### CLUSTER_NODES 
@@ -32,7 +34,7 @@ Finally the `RABBITMQ_ERLANG_COOKIE` must be set and be equal in all nodes all d
 
     docker run --rm -it --network=rabbitmqnet --hostname=NODE2 --name=NODE2 -e RABBITMQ_ERLANG_COOKIE='VERYSTRONGCOOKIE' -e CLUSTER_NODES="rabbit@NODE1,rabbit@NODE2" -e CLUSTER_GOSPEL_NODE=rabbit@NODE1 decsis/rabbitmq-clusterer
     
-If the container appears to be hanged is deafault rabbitmq-clusterer behaviour to wait indefinitly for all the necessary conditions to create the configured cluster so it is indicative of something missing (can be a missing running node, a network access problem or something alike).
+If the container appears to be hanged is default rabbitmq-clusterer behaviour to wait indefinitly for all the necessary conditions to create the configured cluster so it is indicative of something missing (can be a missing running node, a network access problem or something alike).
 
 ## Rancher Metadata based cluster
 
