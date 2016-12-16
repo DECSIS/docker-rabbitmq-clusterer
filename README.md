@@ -2,9 +2,10 @@
 
 This Docker image aims to provide a convinient way to launch rabbitmq clusters using the [rabbitmq-clusterer](https://github.com/rabbitmq/rabbitmq-clusterer) plugin.
 
-It provides two way to achive this one using environment variables to defines the clusters nodes and gospel node and other using Rancher [metadata service](http://docs.rancher.com/rancher/v1.2/en/rancher-services/metadata-service/) to deploy in [Rancher](http://rancher.com) managed environments.
+It provides two way to achieve this. One using environment variables to defines the cluster nodes and gospel node and other using Rancher [metadata service](http://docs.rancher.com/rancher/v1.2/en/rancher-services/metadata-service/) to deploy in [Rancher](http://rancher.com) managed environments.
 
 Clusterer version: rabbitmq_clusterer-3.6.x-667f92b0
+Tested in Rancher 1.2.0
 
 ![rancher demo gif](http://i.imgur.com/A1G3Aim.gif)
 
