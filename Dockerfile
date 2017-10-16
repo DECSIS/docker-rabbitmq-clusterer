@@ -6,6 +6,8 @@ ENV RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS "-pa /plugins/rabbitmq_clusterer.ez/rabb
 ENV RANCHER_MANAGED_CLUSTER=false
 
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates wget curl gettext-base && rm -rf /var/lib/apt/lists/* \
+	&& wget -O /plugins/rabbitmq_delayed_message_exchange.ez "https://www.rabbitmq.com/community-plugins/v3.6.x/rabbitmq_delayed_message_exchange-0.0.1.ez" \
+    && rabbitmq-plugins enable rabbitmq_delayed_message_exchange  --offline \
     && wget -O /plugins/rabbitmq_clusterer.ez "https://www.rabbitmq.com/community-plugins/v3.6.x/rabbitmq_clusterer-${RABBITMQ_CLUSTERER_VERSION}.ez" \
     && rabbitmq-plugins enable rabbitmq_clusterer --offline \
     && apt-get purge -y --auto-remove ca-certificates wget
