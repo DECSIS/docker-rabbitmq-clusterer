@@ -1,5 +1,7 @@
 # docker-rabbitmq-clusterer
 
+[![Build Status](https://travis-ci.org/DECSIS/docker-rabbitmq-clusterer.svg?branch=master)](https://travis-ci.org/DECSIS/docker-rabbitmq-clusterer)
+
 This Docker image aims to provide a convinient way to launch rabbitmq clusters using the [rabbitmq-clusterer](https://github.com/rabbitmq/rabbitmq-clusterer) plugin.
 
 It provides two way to achieve this. One using environment variables to defines the cluster nodes and gospel node and other using Rancher [metadata service](http://docs.rancher.com/rancher/v1.2/en/rancher-services/metadata-service/) to deploy in [Rancher](http://rancher.com) managed environments.
